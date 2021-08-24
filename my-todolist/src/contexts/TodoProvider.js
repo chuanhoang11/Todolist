@@ -6,10 +6,10 @@ export default class TodoProvider extends Component {
         super();
         this.state = {
             todoItems: [
-                { title: "Go to School to day", isComplete: false },
-                { title: "Do HomeWork", isComplete: true },
-                { title: "Go to Library", isComplete: false },
-                { title: "Work from Home", isComplete: false }
+                { id: 0, title: "Go to School to day", isComplete: false },
+                { id: 1, title: "Do HomeWork", isComplete: true },
+                { id: 2, title: "Go to Library", isComplete: false },
+                { id: 3, title: "Work from Home", isComplete: false }
             ],
             valueInput: {
                 value: ""
@@ -51,12 +51,12 @@ export default class TodoProvider extends Component {
         }
 
     }
-    onChangeInput(e){
+    onChangeInput(e) {
         this.setState({
             valueInput: e.target.value
         })
     }
-    onClickAdd(e){
+    onClickAdd(e) {
         this.setState({
             todoItems: [
                 ...this.state.todoItems,
@@ -64,11 +64,11 @@ export default class TodoProvider extends Component {
             ]
         })
     }
-    removeItem(index){
+    removeItem(index) {
         const todoItems = this.state.todoItems
         const arr1 = todoItems.slice(0, index);
         const arr2 = todoItems.slice(index + 1, todoItems.length);
-        const new_arr = [...arr1,...arr2];
+        const new_arr = [...arr1, ...arr2];
         console.log(new_arr)
         this.setState({
             todoItems: [
@@ -77,26 +77,41 @@ export default class TodoProvider extends Component {
 
         })
     }
-    editItem(item, index){
+    editItem(item, index) {
         const todoItems = this.state.todoItems
+        const newItem = todoItems.map((todoItem) => {
+            if (todoItem.id === index) {
+                return (
+                    {
+                        ...item,
+                        title: item.title
+                    }
+                )
+            } else {
+                return todoItem
+            }
+        })
         this.setState({
+            todoItems: [
+                ...newItem
+            ],
             valueInput: {
                 value: todoItems[index].title
             },
         })
     }
-    showItemCompleted(){
+    showItemCompleted() {
         const newarr = this.state.todoItems.slice();
         this.setState({
-            todoItems:[
-                
+            todoItems: [
+
             ]
         })
     }
-    showItemNotCompleted(){
+    showItemNotCompleted() {
         const newarr = this.state.todoItems.slice();
         this.setState({
-            todoItems:[
+            todoItems: [
                 ...newarr.filter((item) => {
                     return item.isComplete == false
                 })
@@ -104,14 +119,14 @@ export default class TodoProvider extends Component {
             ]
         })
     }
-    clearAllItem(){
+    clearAllItem() {
         this.setState({
             todoItems: []
         })
     }
     render() {
         return (
-            <TodoContext.Provider value={{todoItems: this.state.todoItems, onClickChangeStatus: this.onClickChangeStatus, onKeyUp: this.onKeyUp, onClickAdd: this.onClickAdd, onChangeInput: this.onChangeInput, removeItem: this.removeItem, valueInput: this.state.valueInput.value, editItem:this.editItem, showItemCompleted: this.showItemCompleted, showItemNotCompleted: this.showItemNotCompleted, clearAllItem: this.clearAllItem }}>
+            <TodoContext.Provider value={{ todoItems: this.state.todoItems, onClickChangeStatus: this.onClickChangeStatus, onKeyUp: this.onKeyUp, onClickAdd: this.onClickAdd, onChangeInput: this.onChangeInput, removeItem: this.removeItem, valueInput: this.state.valueInput.value, editItem: this.editItem, showItemCompleted: this.showItemCompleted, showItemNotCompleted: this.showItemNotCompleted, clearAllItem: this.clearAllItem }}>
                 {this.props.children}
             </TodoContext.Provider>
         );
