@@ -1,0 +1,136 @@
+.wrapper{
+width: 100%;
+height: 100vh;
+
+
+}
+.container{ 
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #EB3349;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F45C43, #EB3349);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.wrapper-card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    background-color: #f4f7fc;
+    border-radius: 2px;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    width: 20%;
+
+}
+.wrapper-card-inside{
+    padding: 20px 20px 0 20px;
+}
+.task-heading{
+    color: #f46777;
+    margin: 0 20px 20px 20px;
+    text-align: center;
+}
+.cart-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cart-header_input{
+    padding: 10px;
+    outline: none;
+    border: 1px solid #e6e8ea;
+    border-radius: 2px;
+    flex: 1;
+
+}
+.cart-header_btn{
+    padding: 10px 20px;
+    color: #fefefe;
+    background: #dcdcdc;
+    border-radius: 2px;
+    margin-left: 4px;
+
+}
+.cart-header_btn:hover{
+    background:#1a73e8;
+    cursor: pointer;
+}
+.todo-list{
+    list-style: none;
+    padding-left: 0;
+}
+.todo-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e0e8f5;
+    border-radius: 2px;
+    padding-left: 4px;
+    margin: 18px 0;
+}
+.todo-item-img:hover{
+    cursor: pointer;
+}
+.todo-item-text{
+    margin: 0;
+    color:#636465;
+    flex: 1;
+    padding-left: 4px;
+
+}
+.item-complete{
+    text-decoration: line-through;
+    color: #d3d0d0;
+}
+.todo-item-icon{
+    color: #fefefe;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.todo-item-icon_edit,
+.todo-item-icon_delete{
+    padding: 10px;
+    color: #f46777;
+    transition: 0.1s;
+
+}
+.todo-item-icon_edit:hover,
+.todo-item-icon_delete:hover
+{
+    color: #fefefe;
+    background-color: #f46777;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+.card-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #4c5560;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 16px 0;
+}
+.card-footer-show,
+.card-footer-clear{
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.footer-text{
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #f4f7fc;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: 100;
+}
+
